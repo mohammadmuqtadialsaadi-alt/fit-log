@@ -1,4 +1,4 @@
-import type { Workout } from "./types";
+import { Workout } from "./types";
 
 const API_URL = "https://api.abcz.workers.dev/api/fitlog";
 
