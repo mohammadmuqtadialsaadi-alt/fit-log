@@ -1,13 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  ArrowLeft,
-  Bookmark,
-  CalendarPlus,
-  Star,
-} from "lucide-react";
+import { ArrowLeft, Star } from "lucide-react";
 
+import WorkoutActions from "@/components/WorkoutActions";
 import { getWorkout } from "@/lib/api";
 
 interface PageProps {
@@ -32,22 +28,18 @@ export default async function WorkoutDetailsPage({
   return (
     <main className="min-h-screen bg-[#0c0d10] text-white">
       <section className="mx-auto max-w-[1400px] px-5 py-10 sm:px-8 lg:px-10">
-        {/* BACK */}
+        {/* BACK BUTTON */}
         <Link
           href="/"
           className="mb-8 inline-flex items-center gap-2 text-sm text-[#858892] transition hover:text-white"
         >
           <ArrowLeft size={16} />
-
           Back to workouts
         </Link>
 
         {/* DETAILS GRID */}
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-12">
-          {/* ========================= */}
           {/* LEFT IMAGE */}
-          {/* ========================= */}
-
           <div className="relative h-[500px] overflow-hidden rounded-xl bg-[#15171c] sm:h-[600px] lg:h-[650px]">
             <Image
               src={workout.image}
@@ -58,25 +50,19 @@ export default async function WorkoutDetailsPage({
             />
           </div>
 
-          {/* ========================= */}
           {/* RIGHT CONTENT */}
-          {/* ========================= */}
-
           <div className="flex flex-col justify-center">
             {/* TITLE */}
-
             <h1 className="text-4xl font-black uppercase leading-[0.95] tracking-tight sm:text-5xl lg:text-[48px]">
               {workout.name}
             </h1>
 
             {/* DESCRIPTION */}
-
             <p className="mt-5 max-w-2xl text-sm leading-6 text-[#9699a3] sm:text-[15px]">
               {workout.description}
             </p>
 
-            {/* TAGS */}
-
+            {/* MUSCLE GROUP TAGS */}
             <div className="mt-5 flex flex-wrap gap-2">
               {workout.muscleGroups.map((muscle) => (
                 <span
@@ -88,10 +74,7 @@ export default async function WorkoutDetailsPage({
               ))}
             </div>
 
-            {/* ========================= */}
             {/* SPECS */}
-            {/* ========================= */}
-
             <div className="mt-6 overflow-hidden rounded-xl border border-[#282b32] bg-[#171920]">
               <SpecRow
                 label="Equipment"
@@ -135,10 +118,7 @@ export default async function WorkoutDetailsPage({
               />
             </div>
 
-            {/* ========================= */}
             {/* INSTRUCTIONS */}
-            {/* ========================= */}
-
             <div className="mt-7">
               <h2 className="text-sm font-black uppercase tracking-wide">
                 Instructions
@@ -162,29 +142,8 @@ export default async function WorkoutDetailsPage({
               </ol>
             </div>
 
-            {/* ========================= */}
             {/* ACTION BUTTONS */}
-            {/* ========================= */}
-
-            <div className="mt-7 flex flex-wrap gap-3">
-              <button
-                type="button"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#caff00] px-5 py-3 text-xs font-bold uppercase text-black transition hover:bg-[#d8ff45]"
-              >
-                <CalendarPlus size={15} />
-
-                Add to today's plan
-              </button>
-
-              <button
-                type="button"
-                className="inline-flex items-center gap-2 rounded-lg border border-[#343740] bg-transparent px-5 py-3 text-xs font-bold uppercase text-white transition hover:bg-[#1b1d23]"
-              >
-                <Bookmark size={15} />
-
-                Save for later
-              </button>
-            </div>
+            <WorkoutActions />
           </div>
         </div>
       </section>
@@ -192,9 +151,7 @@ export default async function WorkoutDetailsPage({
   );
 }
 
-/* ========================= */
-/* SPEC ROW */
-/* ========================= */
+/* SPECIFICATION ROW */
 
 function SpecRow({
   label,
@@ -213,7 +170,6 @@ function SpecRow({
 
       <span className="flex items-center gap-1 text-sm text-[#e4e5e8]">
         {icon}
-
         {value}
       </span>
     </div>
