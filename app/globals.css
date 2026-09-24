@@ -1,26 +1,27 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+:root { --bg:#090b0e; --panel:#12161c; --panel2:#161b22; --line:#252b34; --muted:#8d95a3; --lime:#ccff00; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:#1c1c1c; color:#f5f7fa; font-family:Arial, Helvetica, sans-serif; }
+a { color:inherit; text-decoration:none; }
+button, select { font:inherit; }
+::selection { background:var(--lime); color:#090b0e; }
+.app-shell { width:min(1120px, calc(100% - 32px)); margin:0 auto; background:var(--bg); min-height:100vh; border-left:1px solid #20242a; border-right:1px solid #20242a; }
+.container { width:min(980px, calc(100% - 48px)); margin:0 auto; }
+.display { font-family:'Arial Narrow','Roboto Condensed',Impact,sans-serif; letter-spacing:-.025em; }
+.muted { color:var(--muted); }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:14px; }
+.lime-btn { background:var(--lime); color:#0a0d0f; border:1px solid var(--lime); font-weight:800; border-radius:999px; transition:.2s; }
+.lime-btn:hover { filter:brightness(.92); transform:translateY(-1px); }
+.outline-btn { background:transparent; color:#f5f7fa; border:1px solid #38414e; border-radius:999px; transition:.2s; }
+.outline-btn:hover { background:#171d24; }
+.tag { background:var(--lime); color:#0a0d0f; border-radius:999px; font-size:10px; line-height:1; font-weight:900; padding:6px 9px; text-transform:uppercase; }
+.stat-icon { color:var(--lime); width:13px; height:13px; }
+.fade-in { animation:fade .35s ease both; }
+@keyframes fade { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+.spinner { width:32px; height:32px; border:3px solid #29313b; border-top-color:var(--lime); border-radius:50%; animation:spin .8s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+@media (max-width:700px) { .container { width:min(100% - 28px, 560px); } .app-shell { width:100%; border:0; } }

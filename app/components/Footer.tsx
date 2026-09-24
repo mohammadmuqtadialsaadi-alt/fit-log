@@ -1,0 +1,2 @@
+import Image from 'next/image';
+export default function Footer(){ return <footer className="border-t border-[#191e25] bg-[#090b0e]"><div className="container flex min-h-[76px] items-center justify-between gap-4 text-xs text-[#7e8793]"><div className="flex items-center gap-2 font-black text-white"><Image src="/assets/logo.png" alt="" width={18} height={18}/>FITLOG</div><div>© 2026 FitLog — Workout Library. Train hard, log honest.</div></div></footer>; }

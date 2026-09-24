@@ -1,0 +1,1 @@
+export default function Loading(){ return <div className="grid min-h-[55vh] place-items-center"><div className="flex flex-col items-center gap-4"><div className="spinner"/><p className="text-sm text-[#9299a5]">Loading workouts…</p></div></div>; }

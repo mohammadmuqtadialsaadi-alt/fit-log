@@ -1,0 +1,2 @@
+import { Clock3, Flame, Star } from 'lucide-react';
+export function WorkoutStats({duration,calories,rating}:{duration:number;calories:number;rating:number}){return <div className="flex items-center gap-3 text-[11px] text-[#c0c6cf]"><span className="flex items-center gap-1"><Clock3 className="stat-icon"/>{duration} min</span><span className="flex items-center gap-1"><Flame className="stat-icon"/>{calories} kcal</span><span className="flex items-center gap-1"><Star className="stat-icon"/>{rating}</span></div>}

@@ -1,31 +1,11 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import './globals.css';
+import { AppProvider } from './contexts/AppContext';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import ToastHost from './components/ToastHost';
 
-import "./globals.css";
+export const metadata = { title: 'FitLog — Workout Library', description: 'A dark, no-nonsense workout library and daily plan.' };
 
-import Navbar from "@/components/Navbar";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "FitLog — Workout Library",
-  description: "Train with intent. Log every set.",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body className={`${inter.variable} antialiased`}>
-        <Navbar />
-        {children}
-      </body>
-    </html>
-  );
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return <html lang="en"><body><div className="app-shell"><AppProvider><Navbar />{children}<Footer /><ToastHost /></AppProvider></div></body></html>;
 }

@@ -1,7 +1,2 @@
-export default function NotFound() {
-  return (
-    <main className="flex min-h-screen items-center justify-center bg-[#0c0d10] text-white">
-      <h1 className="text-4xl font-bold">404 - Page Not Found</h1>
-    </main>
-  );
-}
+import Link from 'next/link';
+export default function NotFound(){ return <main className="grid min-h-[70vh] place-items-center"><div className="text-center"><p className="text-xs font-black tracking-[.2em] text-[var(--lime)]">404</p><h1 className="display mt-2 text-6xl font-black">PAGE NOT FOUND</h1><p className="mt-3 text-sm text-[#8d95a3]">The page you requested does not exist.</p><Link href="/" className="lime-btn mt-6 inline-flex px-5 py-3 text-xs">Go to workouts</Link></div></main>; }
