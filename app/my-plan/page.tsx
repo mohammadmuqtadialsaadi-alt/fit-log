@@ -5,7 +5,7 @@ import { Check, ChevronDown, Clock3, Flame, Star, X } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import Loading from '../components/Loading';
 import { useApp, Workout } from '../contexts/AppContext';
-const API='https://api.abcz.workers.dev/api/fitlog';
+const API='https://api.api-store.workers.dev/api/fitlog';
 type Sort='duration'|'calories'|'rating';
 export default function MyPlan(){ const [tab,setTab]=useState<'plan'|'saved'>('plan'); const [sort,setSort]=useState<Sort>('duration'); const [all,setAll]=useState<Workout[]>([]); const [loading,setLoading]=useState(true); const {plan,saved,done,removeFromPlan,removeSaved,markDone}=useApp();
  useEffect(()=>{fetch(API).then(r=>r.json()).then(setAll).finally(()=>setLoading(false)); const qs=new URLSearchParams(window.location.search); if(qs.get('tab')==='saved') setTab('saved');},[]);

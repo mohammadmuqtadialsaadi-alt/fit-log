@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Loading from '../../components/Loading';
 import { useApp, Workout } from '../../contexts/AppContext';
-const API='https://api.abcz.workers.dev/api/fitlog';
+const API='https://api.api-store.workers.dev/api/fitlog';
 export default function Detail(){ const {id}=useParams<{id:string}>(); const [w,setW]=useState<Workout|null>(null); const [loading,setLoading]=useState(true); const [error,setError]=useState(false); const {addToPlan,saveForLater,isInPlan,isSaved}=useApp();
  useEffect(()=>{fetch(`${API}/${id}`).then(r=>{if(!r.ok)throw new Error();return r.json()}).then(setW).catch(()=>setError(true)).finally(()=>setLoading(false))},[id]);
  if(loading)return <Loading/>; if(error||!w)return <div className="container py-20 text-center"><h1 className="display text-4xl">WORKOUT NOT FOUND</h1><Link href="/" className="lime-btn mt-5 inline-flex px-5 py-3 text-sm">Back to workouts</Link></div>;
